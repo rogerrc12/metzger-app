@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import React from "react";
 import { ScrollView, View } from "react-native";
 import { Container } from "../../components/layout/container.component";
@@ -12,6 +13,8 @@ const AlertDetailsScreen = ({ route, navigation }) => {
 
   const handleEdit = () => navigation.navigate("RegisterAlert", { alertData: alert });
 
+  console.log(alert.creator);
+
   return (
     <SafeArea>
       <Container>
@@ -23,13 +26,13 @@ const AlertDetailsScreen = ({ route, navigation }) => {
               <Text variant="subtitle" style={{ color: "#0057D6" }}>
                 Estado
               </Text>
-              <Text>Enviada</Text>
+              <Text>{alert.priority}</Text>
             </View>
             <View>
               <Text variant="subtitle" style={{ color: "#0057D6" }}>
                 Prioridad
               </Text>
-              <Text>Alta</Text>
+              <Text>{alert.status}</Text>
             </View>
           </AlertInfoWrapper>
           <Spacer variant="top" />
@@ -38,13 +41,15 @@ const AlertDetailsScreen = ({ route, navigation }) => {
               <Text variant="subtitle" style={{ color: "#0057D6" }}>
                 Fecha
               </Text>
-              <Text>20-12-1992</Text>
+              <Text>{format(new Date(alert.createdAt), "dd/MM/yyyy")}</Text>
             </View>
             <View>
               <Text variant="subtitle" style={{ color: "#0057D6" }}>
                 Creada por
               </Text>
-              <Text>Roger Rengifo</Text>
+              <Text>
+                {alert.creator.name} {alert.creator.lastName}
+              </Text>
             </View>
           </AlertInfoWrapper>
           <Spacer varaint="top" size={5} />
