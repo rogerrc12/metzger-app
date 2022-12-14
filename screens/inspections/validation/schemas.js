@@ -1,0 +1,28 @@
+import * as Yup from "yup";
+
+export const inspectionSchema = Yup.object().shape({
+  internal_code: Yup.string().required("Debes seleccionar una opción."),
+  qr_code: Yup.string().required("Debes seleccionar una opción."),
+  pressure_gauge: Yup.string().required("Debes seleccionar una opción."),
+  pressure_gauge_reading: Yup.string().required("Debes seleccionar una opción."),
+  determined_load_indicator: Yup.string().required("Debes seleccionar una opción."),
+  hose: Yup.string().required("Debes seleccionar una opción."),
+  nozzle: Yup.string().required("Debes seleccionar una opción."),
+  cornet: Yup.string().required("Debes seleccionar una opción."),
+  piton: Yup.string().required("Debes seleccionar una opción."),
+  tires: Yup.string().required("Debes seleccionar una opción."),
+  label: Yup.string().required("Debes seleccionar una opción."),
+  lock: Yup.string().required("Debes seleccionar una opción."),
+  hose_holder: Yup.string().required("Debes seleccionar una opción."),
+  paint: Yup.string().required("Debes seleccionar una opción."),
+  instructions: Yup.string().required("Debes seleccionar una opción."),
+  clamping_handle: Yup.string().required("Debes seleccionar una opción."),
+  actuator: Yup.string().required("Debes seleccionar una opción."),
+  control_card: Yup.string().required("Debes seleccionar una opción."),
+  hydrostatic_test: Yup.string().required("Debes seleccionar una opción."),
+  recharge: Yup.string().required("Debes seleccionar una opción."),
+  visibility: Yup.string().required("Debes seleccionar una opción."),
+  signaling: Yup.string().required("Debes seleccionar una opción."),
+  access: Yup.string().required("Debes seleccionar una opción."),
+  hook: Yup.string().required("Debes seleccionar una opción."),
+});

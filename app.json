@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "Metzger",
+    "slug": "metzger",
+    "version": "0.1.65",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0057D6"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "rogerrengifo",
+            "project": "metzger-app",
+            "authToken": "225a7b3f477947d080f19da3e7492cad8a8ef20a69174584aed0b2c6e17d7fcd"
+          }
+        }
+      ]
+    },
+    "plugins": [
+      "sentry-expo"
+    ],
+    "updates": {
+      "enabled": true,
+      "fallbackToCacheTimeout": 15000,
+      "checkAutomatically": "ON_ERROR_RECOVERY",
+      "url": "https://u.expo.dev/473f007c-d677-4d81-ba2b-7024b1cc4cd3"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.metzger.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.metzger.app",
+      "versionCode": 1,
+      "softwareKeyboardLayoutMode": "pan"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "473f007c-d677-4d81-ba2b-7024b1cc4cd3"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
+}
