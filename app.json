@@ -2,7 +2,7 @@
   "expo": {
     "name": "Metzger",
     "slug": "metzger",
-    "version": "0.1.65",
+    "version": "0.1.7",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "icon": "./assets/icon.png",
@@ -23,18 +23,14 @@
         }
       ]
     },
-    "plugins": [
-      "sentry-expo"
-    ],
+    "plugins": ["sentry-expo"],
     "updates": {
       "enabled": true,
       "fallbackToCacheTimeout": 15000,
       "checkAutomatically": "ON_ERROR_RECOVERY",
       "url": "https://u.expo.dev/473f007c-d677-4d81-ba2b-7024b1cc4cd3"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.metzger.app"

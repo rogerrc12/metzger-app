@@ -1,8 +1,8 @@
 import { useIsFocused } from "@react-navigation/native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { Camera, CameraType } from "expo-camera";
-import { useEffect, useState } from "react";
-import { ActivityIndicator, Text } from "react-native";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { ActivityIndicator, AppState, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import ScannerIcon from "../../assets/images/icons/scanner";
 import { Spacer } from "../../components/utils/spacer.component";
@@ -11,7 +11,8 @@ import { getExtinguisherBySerial, validateQrCode } from "../../services/extingui
 import { CameraWrapper, SpinnerWrapper } from "./components/scanner.styles";
 
 const QrScannerScreen = ({ route }) => {
-  const isFocused = useIsFocused();
+  const isFocused = useIsFocused(),
+    [isActive, setIsActive] = useState(AppState.currentState);
 
   const dispatch = useDispatch(),
     params = route.params,
@@ -26,6 +27,16 @@ const QrScannerScreen = ({ route }) => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === "granted");
     })();
+  }, []);
+
+  useLayoutEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      setIsActive(nextAppState === "active");
+    });
+
+    return () => {
+      if (subscription?.remove) subscription.remove();
+    };
   }, []);
 
   const handleBarCodeScanned = ({ data }) => {
@@ -54,7 +65,7 @@ const QrScannerScreen = ({ route }) => {
     );
   }
 
-  return isFocused ? (
+  return isFocused && isActive ? (
     <Camera
       barCodeScannerSettings={{ barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr] }}
       type={cameraType}
